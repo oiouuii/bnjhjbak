@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人作品集</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "微软雅黑", sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.7;
+      letter-spacing: 0.05em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #000000;
+      color: #ffffff;
+      z-index: 999;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+    }
+
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 2rem;
+    }
+
+    .cover h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cover .en {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      letter-spacing: 0.2em;
+      color: #555;
+      margin-bottom: 3rem;
+    }
+
+    .tag-group {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .tag {
+      padding: 0.6rem 1.8rem;
+      border: 1px solid #000;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+    }
+
+    .section-title {
+      font-family: Georgia, serif;
+      font-size: 2.2rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .avatar-circle {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .info-list li {
+      margin: 0.8rem 0;
+      font-size: 0.95rem;
+    }
+
+    .skills {
+      margin-top: 2rem;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: #f5f5f5;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin: 0.4rem 0.4rem 0 0;
+    }
+
+    .about-text h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .timeline {
+      margin-top: 2rem;
+    }
+
+    .timeline-item {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid #000;
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      margin: 0.3rem 0;
+    }
+
+    .project-card {
+      padding: 2rem;
+      border: 1px solid #eee;
+      margin-bottom: 2rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-meta {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      margin-bottom: 1rem;
+    }
+
+    .project-data {
+      font-weight: 600;
+    }
+
+    .core-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .core-card {
+      padding: 1.8rem;
+      border: 1px solid #eee;
+    }
+
+    .core-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .core-card p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .work-item {
+      background: #f9f9f9;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    footer {
+      background: #000;
+      color: #fff;
+      padding: 1.5rem 2rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav-inner">
+      <div class="logo">PORTFOLIO</div>
+      <nav class="nav-links">
+        <a href="#cover">首页</a>
+        <a href="#about">个人简介</a>
+        <a href="#project">项目经历</a>
+        <a href="#core">核心能力</a>
+        <a href="#works">作品展示</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="cover" class="cover">
+    <h1>个人作品集</h1>
+    <div class="en">PORTFOLIO</div>
+    <div class="tag-group">
+      <span class="tag">个人简介</span>
+      <span class="tag">项目经历</span>
+      <span class="tag">核心能力</span>
+      <span class="tag">作品展示</span>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <h2 class="section-title">个人简介 / ABOUT</h2>
+    <div class="about-wrap">
+      <div class="about-left">
+        <div class="avatar-circle">头像占位</div>
+        <ul class="info-list">
+          <li><strong>姓名：</strong>温惠文</li>
+          <li><strong>年龄：</strong>20岁</li>
+          <li><strong>学历：</strong>西安邮电大学 网络与新媒体 本科</li>
+          <li><strong>电话：</strong>15591895080</li>
+          <li><strong>邮箱：</strong>85863213@qq.com</li>
+        </ul>
+        <div class="skills">
+          <div class="skill-tag">新媒体运营</div>
+          <div class="skill-tag">小红书/视频号</div>
+          <div class="skill-tag">Pr/Ae/剪映</div>
+          <div class="skill-tag">PS/秀米/H5</div>
+          <div class="skill-tag">数据复盘</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <h3>自我介绍</h3>
+        <p>
+          我是专注小红书美妆与医美赛道的内容运营者，具备从0到1账号搭建、爆款内容创作、数据驱动优化、素人PR投放、公域引流与私域转化的全链路能力。擅长竞品选题、文案策划、评论运营与社群转化，能精准把握平台流量逻辑与用户需求，高效实现品牌曝光与商业变现，自驱力强、执行力突出，适配高速迭代的新媒体运营场景。
+        </p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2024.09-2028.06</div>
+            <div class="timeline-title">西安邮电大学 网络与新媒体（本科）</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2026.01-2026.03</div>
+            <div class="timeline-title">陕西惠质兰心有限公司 内容运营实习生</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025.09-至今</div>
+            <div class="timeline-title">小红书美妆账号独立运营</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2024.04-2025.07</div>
+            <div class="timeline-title">视频号内容创作</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="project" class="container">
+    <h2 class="section-title">项目经历 / PROJECT</h2>
+
+    <div class="project-card">
+      <h3>医美内容运营（2026.01-2026.03）｜陕西惠质兰心有限公司</h3>
+      <div class="project-meta">竞品选题｜内容撰写｜素人PR投放｜评论运营｜私域引流｜社群转化｜数据复盘</div>
+      <p class="project-desc">
+        • 竞品选题：每日监测对标医院爆款笔记，拆解标题、封面、痛点与结构，批量产出高适配医美引流稿件。<br>
+        • PR投放：负责素人博主筛选、对接沟通、排期发布、稿件铺量分发，扩大品牌曝光。<br>
+        • 评论运营：主动回复用户咨询，做好口碑维护、舆情处理与互动引导，提升笔记权重与用户留存。<br>
+        • 私域转化：在评论区精准引导意向用户进入私域社群，在群内推荐医美项目，完成公域到私域闭环。
+      </p>
+      <p class="project-data">成果：累计产出医美稿件40+篇，成功引导30位意向用户入群，搭建完整引流-留存-转化体系，有效提升线下咨询量。</p>
+    </div>
+
+    <div class="project-card">
+      <h3>小红书美妆账号运营（2025.09-至今）</h3>
+      <div class="project-meta">独立全流程运营｜美妆遮瑕垂类｜数据驱动优化</div>
+      <p class="project-desc">聚焦美妆遮瑕细分赛道，以“问题-解决方案”打造实用垂直内容，精准触达新手需求；独立完成选题、拍摄、剪辑、发布、评论维护全流程，熟悉平台流量机制与用户心理。</p>
+      <p class="project-data">核心数据：月曝光70W+、赞藏累计4.5w+、单篇最高点赞4000+、累计变现3000+；优化封面后点赞量提升50%。</p>
+    </div>
+
+    <div class="project-card">
+      <h3>视频号内容创作（2024.04-2025.07）</h3>
+      <div class="project-meta">内容策划｜视频剪辑｜爆款传播</div>
+      <p class="project-desc">协助内容策划，独立负责剪辑与发布；精准把握传播逻辑，优化节奏与标题，提升完播与分享。</p>
+      <p class="project-data">核心数据：单条最高赞藏2000+、分享2000+。</p>
+    </div>
+
+    <div class="project-card">
+      <h3>数字编辑大赛｜交互H5项目</h3>
+      <div class="project-meta">团队负责人｜交互设计｜技术落地</div>
+      <p class="project-desc">带领4人团队完成《我在敦煌修壁画》H5，主导选题、交互设计、视觉与技术实现，融合传统文化与新媒体。</p>
+      <p class="project-data">荣誉：省级一等奖、国家级二等奖。</p>
+    </div>
+  </section>
+
+  <section id="core" class="container">
+    <h2 class="section-title">核心能力 / CORE COMPETENCIES</h2>
+    <div class="core-grid">
+      <div class="core-card">
+        <h3>新媒体运营</h3>
+        <p>精通小红书/视频号账号搭建、选题策划、流量运营与商业变现；擅长医美、美妆垂类内容种草与线下引流。</p>
+      </div>
+      <div class="core-card">
+        <h3>内容创作与文案</h3>
+        <p>独立撰写医美/美妆专业稿件、引流文案；熟练完成短视频脚本、标题与封面策划，高转化内容产出能力强。</p>
+      </div>
+      <div class="core-card">
+        <h3>PR投放与资源对接</h3>
+        <p>具备素人博主筛选、沟通、排期、发布全流程PR经验；高效联动外部资源，扩大品牌曝光与口碑传播。</p>
+      </div>
+      <div class="core-card">
+        <h3>数据复盘与优化</h3>
+        <p>熟练分析平台后台数据，从曝光、点赞、转化多维度复盘；针对性优化封面、标题、文案，持续提升引流效率。</p>
+      </div>
+      <div class="core-card">
+        <h3>私域与社群运营</h3>
+        <p>擅长公域引流、评论区引导、用户留存与社群转化，可完成从种草到项目推荐的全链路运营。</p>
+      </div>
+      <div class="core-card">
+        <h3>视觉创作与设计</h3>
+        <p>熟练使用Pr/Ae/剪映剪辑、PS修图；掌握秀米图文排版、木疙瘩H5制作，可独立完成全链路视觉素材产出。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="works" class="container">
+    <h2 class="section-title">作品展示 / WORKS</h2>
+    <div class="works-grid">
+      <div class="work-item">医美稿件封面 01</div>
+      <div class="work-item">小红书美妆封面 02</div>
+      <div class="work-item">视频号作品截图</div>
+      <div class="work-item">H5交互页面</div>
+      <div class="work-item">摄影作品 01</div>
+      <div class="work-item">图文排版作品</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <span>电话：15591895080</span>
+      <span>欢迎合作与交流</span>
+      <span>邮箱：85863213@qq.com</span>
+    </div>
+  </footer>
+
+</body>
+
+</html>
